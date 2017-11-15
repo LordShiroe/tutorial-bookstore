@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="card-header">
+    <h1>Generos</h1>
+  </div>
+  <div class="card-body">
+    <ul class="list-unstyled">
+      <li *ngFor="let genero of generos" class="input-group mb-3 d-block">
+        <div class="row">
+          <input type="text" [(ngModel)]="genero.name" class="form-control" required #name="ngModel" (keyup.enter)="actualizar(genero)"
+            (blur)="actualizar(genero)">
+          <span class="input-group-btn">
+            <button class="btn btn-danger" type="button" (click)="eliminar(genero)">
+              <i class="icon-trash"></i>
+            </button>
+          </span>
+        </div>
+        <div *ngIf="name.invalid && (genero.name.dirty || name.touched)" class="alert alert-danger row">
+          <div *ngIf="name.errors.required">
+            Se requiere el nombre del genero.
+          </div>
+        </div>
+      </li>
+    </ul>
+    <hr>
+    <h2>Ingresar un Nuevo Género</h2>
+    <div class="form-group row">
+      <label class="col-sm-1 col-form-label" for="name">Nombre</label>
+      <div class="col-sm-11">
+        <input type="text" id="name" class="form-control" required [formControl]="name">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+          <div *ngIf="name.errors.required">
+            Se requiere el nombre del genero.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn btn-primary mx-auto" [disabled]="name.errors" (click)="registrar()">Registrar</button>
+    </div>
+  </div>
+</div>

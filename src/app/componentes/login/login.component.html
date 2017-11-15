@@ -1,0 +1,11 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-login">
+  <h2 class="form-signin-heading">Ingresar</h2>
+  <label for="username" class="sr-only">Nombre de Usuario</label>
+  <input type="text" id="username" class="form-control" placeholder="Nombre de Usuario" formControlName="username" required
+    autofocus>
+  <app-error-input [control]="loginForm.controls.username"></app-error-input>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="password" required>
+  <app-error-input [control]="loginForm.controls.password"></app-error-input>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+</form>

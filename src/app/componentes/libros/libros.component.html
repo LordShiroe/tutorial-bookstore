@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-header">
+    <h1> Ultimos libros</h1>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="card col-sm-6 col-xs-12" *ngFor="let libro of libros">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4 class="card-title">{{libro.title}}</h4>
+              <p class="card-text">{{libro.description | excerpt:50}}</p>
+              <a routerLink="/detalle/{{libro._id}}" class="btn btn-primary float-right">Leer Mas</a>
+            </div>
+            <div class="col-sm-6">
+              <img src="{{libro.image_url}}" alt="{{libro.title}}" class="img-thumbnail  mx-auto d-block mt-3">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

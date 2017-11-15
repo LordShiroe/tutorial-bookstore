@@ -1,0 +1,34 @@
+<div class="card">
+  <div class="card-header d-block">
+    <h1 class="card-title d-inline ">{{libro.title}}</h1>
+    <a routerLink="/actualizar/{{libro._id}}" class="float-right">
+      <i class="icon-pencil"></i> Editar
+    </a>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <ul class="list-unstyled">
+          <li>
+            <span class="font-weight-bold mr-1">Páginas:</span>{{libro.pages}}
+          </li>
+          <li>
+            <span class="font-weight-bold mr-1">Autor:</span>{{libro.author}}
+          </li>
+          <li>
+            <span class="font-weight-bold mr-1">Editorial:</span>{{libro.publisher}}
+          </li>
+          <li>
+            <span class="font-weight-bold mr-1">Genero:</span>{{libro.genre}}
+          </li>
+          <li></li>
+        </ul>
+        <p class="card-text text-justify">{{libro.description}}</p>
+        <a href="{{libro.buy_url}}" rel="noopener" target="_blank" class="btn btn-primary float-right">Comprar</a>
+      </div>
+      <div class="col-sm-6">
+        <img src="{{libro.image_url}}" alt="{{libro.title}}" class="img-thumbnail  mx-auto d-block mt-3">
+      </div>
+    </div>
+  </div>
+</div>

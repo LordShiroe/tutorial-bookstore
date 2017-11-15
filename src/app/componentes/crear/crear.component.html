@@ -1,0 +1,76 @@
+<div class="card mx-auto" *ngIf="!registrado">
+  <div class="card-header">
+    <h1>Añadir un nuevo libro</h1>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="nuevo" (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+        <label for="titulo" class="col-sm-3 col-form-label font-weight-bold">Titulo</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="titulo" formControlName="title" required>
+          <app-error-input [control]='nuevo.controls.title'></app-error-input>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="autor" class="col-sm-3 col-form-label font-weight-bold">Autor</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="autor" formControlName="author" required>
+          <app-error-input [control]='nuevo.controls.author'></app-error-input>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="paginas" class="col-sm-3 col-form-label font-weight-bold">Paginas</label>
+        <div class="col-sm-9">
+          <input type="number" class="form-control" id="paginas" formControlName="pages">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="genero" class="col-sm-3 col-form-label font-weight-bold">Genero</label>
+        <div class="col-sm-9">
+          <select class="form-control" id="genero" formControlName="genre">
+            <option *ngFor="let genero of generos" [value]="genero.name">{{genero.name}} </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="editorial" class="col-sm-3 col-form-label font-weight-bold">Editorial</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="editorial" formControlName="publisher">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="portada" class="col-sm-3 col-form-label font-weight-bold">Portada</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="portada" placeholder="URL de la Imagen" formControlName="image_url" required>
+          <app-error-input [control]='nuevo.controls.image_url'></app-error-input>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="comprar" class="col-sm-3 col-form-label font-weight-bold">Donde comprar</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="comprar" placeholder="URL de donde Comprar" formControlName="buy_url" required>
+          <app-error-input [control]='nuevo.controls.buy_url'></app-error-input>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="descripcion" class="col-sm-3 col-form-label font-weight-bold">Descripcion</label>
+        <div class="col-sm-9">
+          <textarea type="text" class="form-control" id="descripcion" formControlName="description" required></textarea>
+          <app-error-input [control]='nuevo.controls.description'></app-error-input>
+        </div>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn btn-primary mx-auto" [disabled]="nuevo.invalid">Registrar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="card mx-auto" *ngIf="registrado">
+  <div class="card-header">
+    <h2 class="text-primary">¡MUCHAS GRACIAS!</h2>
+  </div>
+  <div class="card-body">
+    <p>El libro {{nuevo.value.title}} ha sido registrado!</p>
+    <button type="submit" class="btn btn-primary mt-2" (click)="location.back()">Volver</button>
+  </div>
+</div>
